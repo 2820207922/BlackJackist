@@ -1,0 +1,6 @@
+5
+#Dealer #Dealer 1000000000
+#Computer1 #Computer1 100000
+#Computer2 #Computer2 100000
+#Computer3 #Computer3 100000
+Mike 12345 10000
