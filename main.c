@@ -1106,7 +1106,7 @@ int main()
         // 设置服务器地址
         server.sin_family = AF_INET;
         server.sin_addr.s_addr = INADDR_ANY;
-        server.sin_port = htons(8888);
+        server.sin_port = htons(7777);
 
         // 绑定地址
         if (bind(listenSocket, (struct sockaddr *)&server, sizeof(server)) == SOCKET_ERROR)
@@ -1654,6 +1654,7 @@ int main()
                 }
             }
         }
+        sleep(1);
 
         memset(poker_cnt, 0, sizeof(poker_cnt));
         players[0].poker_num = 2;
@@ -2717,8 +2718,12 @@ int main()
                 fprintf(stderr, "Send failed\n");
                 return 1;
             }
+
+            // 关闭客户端连接
+            close(clientSocket_list[k]);
         }
     }
+    sleep(1);
 
     return 0;
 }

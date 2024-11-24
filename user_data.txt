@@ -1,4 +1,4 @@
-8
+9
 #Dealer #Dealer 1000000000
 #Computer1 #Computer1 100000
 #Computer2 #Computer2 100000
@@ -7,3 +7,4 @@ Mike 12345 10000
 Jack 67890 10000
 John 13579 10000
 Anna 24680 10000
+Hugh 123 10000

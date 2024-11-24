@@ -49,6 +49,13 @@ DWORD WINAPI SendThread(LPVOID lpParameter)
     return 0;
 }
 
+int is_valid_ip(const char *ip)
+{
+    struct sockaddr_in sa;
+    int result = inet_pton(AF_INET, ip, &(sa.sin_addr));
+    return result != 0;
+}
+
 int main()
 {
     WSADATA wsa;
@@ -75,10 +82,20 @@ int main()
         return 1;
     }
 
+    char server_ip[20];
+    printf("请输入服务器IP地址: ");
+    scanf("%s", server_ip);
+
+    while (!is_valid_ip(server_ip))
+    {
+        printf("IP地址无效，请重新输入: ");
+        scanf("%s", server_ip);
+    }
+
     // 设置服务器地址
     server.sin_family = AF_INET;
-    server.sin_addr.s_addr = inet_addr("127.0.0.1"); // 替换为服务器的IP地址
-    server.sin_port = htons(8888);
+    server.sin_addr.s_addr = inet_addr(server_ip); // 替换为服务器的IP地址
+    server.sin_port = htons(7777);
 
     // 连接服务器
     if (connect(clientSocket, (struct sockaddr *)&server, sizeof(server)) < 0)
